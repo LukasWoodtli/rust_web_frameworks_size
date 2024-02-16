@@ -6,7 +6,7 @@ set -o pipefail
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-examples=('hyper_server_example' 'axum_server_example')
+examples=('hyper_server_example' 'axum_server_example' 'actix_server_example')
 
 for example in "${examples[@]}"; do
     echo "Running example for ${example}"
