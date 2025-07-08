@@ -1,8 +1,8 @@
 [package]
-name = "salvo_server_example"
+name = "poem_server_example"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 tokio = { version = "1.46.1", default-features = false, features=["rt-multi-thread"]}
-salvo = { version = "0.79.0", features = ["serve-static"] }
+poem = { version = "3.1.11", features = ["static-files"] }
