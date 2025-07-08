@@ -6,7 +6,7 @@ set -o pipefail
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-examples=('hyper_server_example' 'axum_server_example' 'actix_server_example' 'rocket_server_example')
+examples=('hyper_server_example' 'axum_server_example' 'actix_server_example' 'rocket_server_example' 'salvo_server_example')
 
 for example in "${examples[@]}"; do
     echo "Running example for ${example}"
@@ -14,7 +14,7 @@ for example in "${examples[@]}"; do
     cargo build --release &> /dev/null
     cargo run --release &
     pid=$!
-    trap 'kill -9 $pid &> /dev/null' EXIT
+    trap 'kill -9 $pid &> /dev/null || true' EXIT
     sleep 1
     curl "http://localhost:3000/index.html" 2> /dev/null | grep "Hello from file"
     curl "http://localhost:3000/api" 2> /dev/null | grep "Hello from API"
