@@ -14,7 +14,7 @@ for example in "${examples[@]}"; do
     cargo build --release &> /dev/null
     cargo run --release &
     pid=$!
-    trap 'kill -9 $pid &> /dev/null || true' EXIT
+    trap 'kill -9 $pid &> /dev/null' EXIT
     sleep 1
     curl "http://localhost:3000/index.html" 2> /dev/null | grep "Hello from file"
     curl "http://localhost:3000/api" 2> /dev/null | grep "Hello from API"
